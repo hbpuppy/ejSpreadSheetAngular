@@ -1,0 +1,43 @@
+<h1>
+    {{title}}
+</h1>
+
+<ej-grid [allowPaging]="true" [allowSorting]="true" [gridLines]="gridline" [dataSource]="gridData" [(pageSettings.currentPage)]="value">
+    <e-columns>
+        <e-column field="OrderID" headerText="Order ID" width="75" textAlign="right"></e-column>
+        <e-column field="CustomerID" headerText="Customer ID" width="80"></e-column>
+        <e-column field="EmployeeID" headerText="Employee ID" width="75" textAlign="right">
+            <template e-template let-data>
+                <div *ngIf="data.EmployeeID">
+                    <img style="width: 75px; height: 70px" [attr.src]="'src/images/grid/Employees/' + data.EmployeeID + '.png' " [alt]="data.EmployeeID"
+                    />
+                </div>
+            </template>
+        </e-column>
+        <e-column field="Freight" width="75" format="{0:C}" textAlign="right"></e-column>
+        <e-column field="OrderDate" headerText="Order Date" width="80" format="{0:MM/dd/yyyy}" textAlign="right"></e-column>
+    </e-columns>
+</ej-grid>
+
+<input ej-numerictextbox [(ngModel)]="value" text="Button">
+
+
+<!-- <ej-spreadsheet id="spreadsheet"></ej-spreadsheet>  -->
+
+
+<table>
+    <tr>
+        <td>My first button</td>
+        <td>
+            <input type="button" ej-button id="button123" value="Holy COW!">
+
+        </td>
+    </tr>
+</table>
+
+<div>
+    <input id="whatever" type="text" ej-currencytextbox [(ngModel)]="dollarAmount" width="250px" [decimalPlaces]="4" />
+</div>
+
+<hr>
+**{{dollarAmount}}**
